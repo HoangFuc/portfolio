@@ -1,0 +1,39 @@
+---
+const navLinks = [
+  { name: "Projects", path: "/projects" },
+  { name: "About", path: "/about" },
+  { name: "Contact", path: "/contact" },
+];
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.replace(/\/$/, ""); // remove trailing slash
+---
+
+<nav class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl border-b border-outline-variant/10">
+  <div class="flex justify-between items-center px-8 py-6 max-w-screen-2xl mx-auto">
+    <a href="/" class="font-headline font-bold tracking-tighter text-xl text-on-surface">
+      PHUC_DEV
+    </a>
+    <div class="hidden md:flex items-center gap-10">
+      {navLinks.map((link) => (
+        <a
+          href={link.path}
+          class={`font-headline tracking-tight text-sm uppercase transition-colors duration-300 ${
+            currentPath === link.path
+              ? "text-on-surface border-b-2 border-on-surface pb-1"
+              : "text-outline hover:text-on-surface"
+          }`}
+        >
+          {link.name}
+        </a>
+      ))}
+      <a 
+        href="/resume.pdf" 
+        download 
+        class="bg-on-surface text-surface px-6 py-2 rounded-lg font-headline text-sm uppercase tracking-wider hover:scale-95 transition-transform duration-150 ease-in-out"
+      >
+        Resume
+      </a>
+    </div>
+  </div>
+</nav>

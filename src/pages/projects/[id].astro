@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProjectDetail from '../../pages/ProjectDetail.tsx';
+import { projects } from '../../data/projects';
+
+export async function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { id: project.id },
+  }));
+}
+
+const { id } = Astro.params;
+const project = projects.find((p) => p.id === id);
+---
+
+<Layout title={`${project?.title || 'Project'} | Nguyễn Hoàng Phúc`}>
+	<ProjectDetail id={id} client:load />
+</Layout>

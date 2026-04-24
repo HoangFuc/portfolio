@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { ArrowRight, Terminal } from "lucide-react";
 import { motion } from "motion/react";
-import { ArrowRight, Terminal, Cpu } from "lucide-react";
 import { projects } from "../data/projects";
 
 export default function Home() {
@@ -99,17 +99,6 @@ export default function Home() {
 
       <section className="mt-40 max-w-screen-2xl mx-auto px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="group relative bg-surface-container-low p-8 min-h-[400px] flex flex-col justify-between hover:-translate-y-1 transition-transform duration-300">
-            <div className="flex justify-between items-start">
-              <span className="font-headline text-4xl font-light text-outline-variant">01</span>
-              <Terminal className="text-outline" size={24} />
-            </div>
-            <div>
-              <h3 className="font-headline font-bold text-2xl uppercase tracking-tight mb-2">Interface Systems</h3>
-              <p className="text-on-surface-variant text-sm leading-relaxed">Modular design systems built with atomic precision and accessibility at the core.</p>
-            </div>
-          </div>
-          
           {featuredProjects[0] && (
             <div className="md:col-span-2 group relative bg-surface-container p-8 min-h-[400px] flex flex-col justify-between overflow-hidden">
               <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 group-hover:scale-110 transition-transform duration-700">
@@ -121,7 +110,7 @@ export default function Home() {
                 />
               </div>
               <div className="relative z-10">
-                <span className="font-headline text-4xl font-light text-outline-variant">02</span>
+                <span className="font-headline text-4xl font-light text-outline-variant">01</span>
                 <div className="mt-24 max-w-xs">
                   <h3 className="font-headline font-bold text-3xl uppercase tracking-tight mb-4">{featuredProjects[0].title.split(' - ')[0]}</h3>
                   <p className="text-on-surface-variant text-base leading-relaxed mb-6">{featuredProjects[0].description}</p>
@@ -130,6 +119,23 @@ export default function Home() {
                     <span className="group-hover/link:translate-x-1 transition-transform">↗</span>
                   </a>
                 </div>
+              </div>
+            </div>
+          )}
+
+          {featuredProjects[1] && (
+            <div className="group relative bg-surface-container-low p-8 min-h-[400px] flex flex-col justify-between hover:-translate-y-1 transition-transform duration-300">
+              <div className="flex justify-between items-start">
+                <span className="font-headline text-4xl font-light text-outline-variant">02</span>
+                <Terminal className="text-outline" size={24} />
+              </div>
+              <div>
+                <h3 className="font-headline font-bold text-2xl uppercase tracking-tight mb-2">{featuredProjects[1].title.split(' - ')[0]}</h3>
+                <p className="text-on-surface-variant text-sm leading-relaxed mb-6">{featuredProjects[1].description}</p>
+                <a href={`/projects/${featuredProjects[1].id}`} className="flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-on-surface font-bold group/link">
+                  View Project
+                  <span className="group-hover/link:translate-x-1 transition-transform">↗</span>
+                </a>
               </div>
             </div>
           )}
